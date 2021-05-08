@@ -1,0 +1,16 @@
+<% if flash[:notice].present? %>
+  <div id="flash-notice" style="border: 1px solid red; color: red; padding: 10px;">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<div class="access index">
+  <h1>Menu</h1>
+
+<p>You are logged in as <%= @username %> (<%= @user_id %>)</p>
+<p><%= link_to('Logout', logout_path, method: :delete) %></p>
+  <ul>
+    <li><%= link_to('Manage Subjects', subjects_path) %></li>
+    <li><%= link_to('Manage Pages', pages_path) %></li>
+  </ul>
+</div>
