@@ -7,29 +7,32 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= yield(:script) %>
   </head>
 
   <body>
 
-    <header style="height: 1em; padding: 1em; margin-bottom: 1em; background: #0099CC">
-      ContentManagementSystem
+    <header>
+      <span id="logo">ContentManagementSystem</span>
       <% if session[:user_id].present? %>
         <span style="float: right;">
-          User: <%= @username %> (<%= link_to('Logout', logout_path, method: :delete) %>)
+          User: <%= @username %>
+          <%= link_to(logout_path, method: :delete) do %>
+          <%= image_tag('icon_logoff.png', size: '14x14', title: 'Logout') %>
+          <% end %>
         </span>
       <% end %>
     </header>
 
-    <div id="content" style="min-height: 700px;">
+    <div id="content">
       <%= render(partial: 'application/flash') %>
       <%= yield %>
     </div>
 
-    <header style="height: 1em; padding: 1em; margin-top: 1em; background: #0099CC">
+    <footer>
       Copyright <%= Time.now.year %>
-    </header>
+    </footer>
 
   </body>
 </html>

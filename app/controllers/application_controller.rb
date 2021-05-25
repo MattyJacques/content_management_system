@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
 
   def render_404
     filepath = Rails.root.join('public', '404.html')
-    render(file: filepath, status 404, layout: false) and return
+    render(file: filepath, status: 404, layout: false) and return
   end
 
 end
